@@ -5,7 +5,7 @@ class: center, middle
 Intellectsoft LTD
 
 ---
-
+class: larger-code
 # Dockerfile
 
 ```dockerfile
@@ -21,21 +21,13 @@ RUN docker-php-ext-install \
         opcache \
         pdo pdo_pgsql
 
-RUN yes | pecl install apcu xdebug-beta \
-        && echo "extension=$(find /usr/local/lib/php/extensions/ -name apcu.so)" > /usr/local/etc/php/conf.d/apcu.ini \
-        && echo "apc.enable_cli=1" > /usr/local/etc/php/conf.d/apcu.ini \
-        && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
-        && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-        && echo "xdebug.remote_autostart=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-        && echo "xdebug.remote_connect_back=on" >> /usr/local/etc/php/conf.d/xdebug.ini
-
 COPY . /srv/
 
 WORKDIR /srv
 CMD ["bash", "boot.sh"]
 ```
 ---
-
+class: larger-code
 # Dockerfile
 
 ```dockerfile
@@ -51,21 +43,13 @@ RUN docker-php-ext-install \
         opcache \
         pdo pdo_pgsql
 
-RUN yes | pecl install apcu xdebug-beta \
-        && echo "extension=$(find /usr/local/lib/php/extensions/ -name apcu.so)" > /usr/local/etc/php/conf.d/apcu.ini \
-        && echo "apc.enable_cli=1" > /usr/local/etc/php/conf.d/apcu.ini \
-        && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
-        && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-        && echo "xdebug.remote_autostart=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-        && echo "xdebug.remote_connect_back=on" >> /usr/local/etc/php/conf.d/xdebug.ini
-
 COPY . /srv/
 
 WORKDIR /srv
 CMD ["bash", "boot.sh"]
 ```
 ---
-
+class: larger-code
 # Dockerfile
 
 ```dockerfile
@@ -81,21 +65,13 @@ RUN apt-get update && \
 *       opcache \
 *       pdo pdo_pgsql
 
-RUN yes | pecl install apcu xdebug-beta \
-        && echo "extension=$(find /usr/local/lib/php/extensions/ -name apcu.so)" > /usr/local/etc/php/conf.d/apcu.ini \
-        && echo "apc.enable_cli=1" > /usr/local/etc/php/conf.d/apcu.ini \
-        && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
-        && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-        && echo "xdebug.remote_autostart=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-        && echo "xdebug.remote_connect_back=on" >> /usr/local/etc/php/conf.d/xdebug.ini
-
 COPY . /srv/
 
 WORKDIR /srv
 CMD ["bash", "boot.sh"]
 ```
 ---
-
+class: larger-code
 # Dockerfile
 
 ```dockerfile
@@ -111,14 +87,6 @@ RUN docker-php-ext-install \
         opcache \
         pdo pdo_pgsql
 
-RUN yes | pecl install apcu xdebug-beta \
-        && echo "extension=$(find /usr/local/lib/php/extensions/ -name apcu.so)" > /usr/local/etc/php/conf.d/apcu.ini \
-        && echo "apc.enable_cli=1" > /usr/local/etc/php/conf.d/apcu.ini \
-        && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
-        && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-        && echo "xdebug.remote_autostart=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-        && echo "xdebug.remote_connect_back=on" >> /usr/local/etc/php/conf.d/xdebug.ini
-
 COPY . /srv/
 
 *WORKDIR /srv
@@ -126,7 +94,7 @@ COPY . /srv/
 ```
 
 ---
-
+class: larger-code
 # Docker Build
 
 ```bash
@@ -152,7 +120,7 @@ COPY . /srv/
 ```
 
 ---
-
+class: larger-code
 # Start Container?
 
 ```bash
@@ -288,7 +256,7 @@ services:
 ```
 
 ---
-
+class: larger-code
 ### Multiple Docker Compose files
 
 ```terminal
