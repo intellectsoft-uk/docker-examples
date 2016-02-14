@@ -5,6 +5,119 @@ class: center, middle
 Intellectsoft LTD
 
 ---
+class: center, middle
+# Who I am
+
+--
+
+Full-stack developer at Intellectsoft LTD.
+
+http://github.com/fesor
+
+---
+class: center, middle
+# Why Docker?
+
+---
+class: center, middle
+# All cool guys use docker!
+
+---
+class: center, middle
+# Just kidding
+
+---
+class: center, middle
+# 90's
+
+---
+class: center, middle
+background-image: url(img/bad_processes.jpg)
+background-size: cover
+background-position: 50% 50%
+
+---
+class: center, middle
+## XP
+
+--
+## Adaptive Software Development
+
+--
+## Agile Software Development Manifesto
+
+--
+## Lean
+
+---
+class: center, middle
+
+## BSD Jail
+
+--
+## Sun Solaris Container
+
+--
+## OpenVZ
+
+---
+class: center, middle
+
+## LXC, cgroups, namespaces...
+
+---
+class: center, middle
+![](img/ops_problem_now.jpg)
+
+---
+class: center, middle
+
+# DevOps
+
+---
+class: center, middle
+
+# Continuous Delivery
+
+---
+class: center, middle
+# Puppet, Chief, Ansible
+
+---
+class: center, middle
+# Vagrant
+
+---
+class: center, middle
+![](img/slowpoke.png)
+
+
+---
+class: center, middle
+
+# We need a ~~hero~~ new tool
+
+---
+class: center, middle
+# Docker!
+
+---
+# Docker
+
+todo: Draw how it works
+
+---
+class: center, middle
+# Unix: everything is a file
+
+---
+class: center
+# UnionFS
+
+--
+![](img/aufs.png)
+
+---
 class: larger-code
 # Dockerfile
 
@@ -27,6 +140,13 @@ WORKDIR /srv
 CMD ["bash", "boot.sh"]
 ```
 ---
+class: center
+# Dockerfile
+
+![](img/dockefile-aufs.png)
+
+---
+
 class: larger-code
 # Dockerfile
 
@@ -124,7 +244,7 @@ class: larger-code
 # Start Container?
 
 ```bash
-docker run
+docker run --name test -it debian
 ```
 
 ---
@@ -236,6 +356,34 @@ volumes:
 
 ---
 
+# Docker Compose
+
+```yaml
+# docker-compose.yml
+version: "2"
+
+services:
+    php:
+        build: '.'
+        depends_on:
+            - database
+        env_file: .env
+        volumes:
+            - '.:/srv'
+
+    database:
+        image: postgres:9.4
+        env_file: .env
+        volumes:
+            - dbdata:/var/lib/postgresql
+
+volumes:
+    dbdata:
+        driver: local
+```
+
+---
+
 # Split services configuration
 
 ```yaml
@@ -257,7 +405,7 @@ services:
 
 ---
 class: larger-code
-### Multiple Docker Compose files
+# Multiple Docker Compose files
 
 ```terminal
 docker-compose  -f 'docker-compose.yml' \
