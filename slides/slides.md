@@ -275,7 +275,45 @@ php-fpm
 ```
 
 ---
-# Start Container
+class: middle larger-code
+# Volumes
+
+--
+
+```
+docker run -it  -rm \
+*      -v '/var/lib/postgresql'
+*      -v 'config/postgres/psql.conf:/etc/postgres/psql.conf'
+       postgres:9.4
+```
+
+---
+class: center, middle
+
+### No more data-only container madness
+
+--
+
+# Named Volumes
+
+---
+
+# Networking
+
+---
+
+# Networking: Bridge
+
+---
+
+# Networking: Host
+
+---
+
+# Networking: Container
+
+---
+# Start Container...
 
 ```bash
 #!/usr/bin/env bash
@@ -440,3 +478,88 @@ services:
     maildev:
         image: djfarrelly/maildev:0.12.1
 ```
+
+---
+
+# So... How to distribute images?
+
+
+---
+
+# Docker Hub
+
+---
+
+# Docker Distribution
+
+---
+
+# Docker Distribution: Auth
+
+---
+
+# Docker Distribution: Frontend
+
+---
+
+# Deployment?
+
+---
+
+# Client-Server Architecture
+
+---
+
+# Docker machine
+
+```
+docker machine add
+       --driver general
+       --general-host 16.45.12.54
+       --general-ssh-user root
+
+```
+---
+
+# Docker machine
+
+```
+docker machine add
+*       --driver digitalocean
+
+```
+---
+
+# Deployment!
+
+```
+eval "$(docker-machine env my-host)"
+
+docker-compose -f docker-compose.prod.yml up
+```
+
+---
+
+# How about multiple hosts?
+
+---
+
+# Fixed option
+
+---
+
+# Networking: Overlay
+
+---
+
+# Let is Swarm
+
+---
+
+# Service Discovery
+
+### Etcd, Consul, Zookeeper
+
+---
+
+# Service Discovery
