@@ -41,6 +41,102 @@
     h1 {
         text-align: center;
     }
+
+    .docker-logo > img{
+        max-width: 35%;
+        margin-bottom: -5%;
+    }
+
+    .bg-right {
+
+    }
+
+    .bg-right h1 {
+        width: 30%;
+        text-align: left;
+    }
+
+    .bg-cover {
+        background-size: cover !important;
+        background-position: 50% 50% !important;
+    }
+
+    .img-slide h1 {
+        font-size: 4.5em;
+    }
+
+    .dark {
+        color: #fff;
+        text-shadow: 0 0 5px #000;
+    }
+
+    .large-headers h1 {
+        font-size: 6em;
+    }
+
+    .right h1 {
+        text-align: right;
+    }
+
+    h2 > strong {
+        font-size: 1.5em;
+        line-height: 1;
+        margin-left: 10%;
+    }
+
+    .img-80, .img-60 {
+        display: block;
+        margin: auto;
+    }
+
+    .img-80 {
+        width: 80%;
+    }
+    .img-60 {
+        width: 60%;
+    }
+        .img-60 > img,
+        .img-80 > img {
+            width: 100%;
+        }
+
+    .text-overlay h1 {
+        font-size: 6em;
+        color: #fff;
+        text-shadow: 0 0 15px #000;
+    }
 </style>
+<script>
+    function toggleFullScreen() {
+        if (!document.fullscreenElement &&    // alternative standard method
+                !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement ) {  // current working methods
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            }
+        }
+    }
+
+    document.addEventListener("keydown", function(e) {
+        if (e.keyCode == 13) {
+            toggleFullScreen();
+        }
+    }, false);
+</script>
 </body>
 </html>

@@ -5,10 +5,8 @@ class: center, middle
 Intellectsoft LTD
 
 ---
-class: center, middle
+class: center, middle  
 # Who I am
-
---
 
 Full-stack developer at Intellectsoft LTD.
 
@@ -19,12 +17,15 @@ class: center, middle
 # Why Docker?
 
 ---
-class: center, middle
+class: center, bg-cover, bg-right
+background-image: url(img/cool_guy.jpg)
 # All cool guys use docker!
 
 ---
-class: center, middle
-# Just kidding
+class: right, bottom, bg-cover, img-slide, dark
+background-image: url(img/blog-banner-dr-evil.png)
+
+# Right...
 
 ---
 class: center, middle
@@ -32,32 +33,38 @@ class: center, middle
 
 ---
 class: center, middle
-background-image: url(img/bad_processes.jpg)
-background-size: cover
-background-position: 50% 50%
+# 1999
+
+(Matrix, Phantom Menace, Futurama, Family Guy)
 
 ---
 class: center, middle
-## XP
+### Adaptive Software Development
 
---
-## Adaptive Software Development
+## Extreme Programming
 
---
-## Agile Software Development Manifesto
+# Agile
 
---
 ## Lean
+
+---
+class: center
+# Iterative development
+
+.img-60[![](img/agile.svg)]
+
+---
+class: center, middle, bg-cover, text-overlay
+background-image: url(img/maxresdefault.jpg)
+# Microservices!
 
 ---
 class: center, middle
 
 ## BSD Jail
 
---
 ## Sun Solaris Container
 
---
 ## OpenVZ
 
 ---
@@ -67,21 +74,16 @@ class: center, middle
 
 ---
 class: center, middle
-![](img/ops_problem_now.jpg)
-
----
-class: center, middle
-
-# DevOps
-
----
-class: center, middle
-
-# Continuous Delivery
-
----
-class: center, middle
 # Puppet, Chief, Ansible
+
+---
+class: center, middle
+.img-80[![](img/ops_problem_now.jpg)]
+
+---
+class: center, bottom, bg-cover, img-slide, large-headers, dark
+background-image: url(img/devops.jpg)
+# DevOps
 
 ---
 class: center, middle
@@ -91,6 +93,10 @@ class: center, middle
 class: center, middle
 ![](img/slowpoke.png)
 
+---
+class: center, middle
+
+# Continuous Delivery
 
 ---
 class: center, middle
@@ -102,21 +108,20 @@ class: center, middle
 # Docker!
 
 ---
-# Docker
+class: center
+.docker-logo[![](img/docker_logo.png)]
 
-todo: Draw how it works
+![](img/docker_engine.svg)
 
 ---
 class: center, middle
 # Unix: everything is a file
 
 ---
-class: center
+class: center, middle
 # UnionFS
 
---
-![](img/aufs.png)
-
+### BtrFS, AuFS, OverlayFS
 ---
 class: larger-code
 # Dockerfile
@@ -127,23 +132,21 @@ RUN apt-get update && \
     apt-get install -y libmcrypt-dev libpq-dev netcat
 
 RUN docker-php-ext-install \
-        mcrypt \
-        bcmath \
-        mbstring \
-        zip \
-        opcache \
-        pdo pdo_pgsql
+        mcrypt bcmath mbstring zip \
+        opcache pdo pdo_pgsql
 
 COPY . /srv/
 
 WORKDIR /srv
 CMD ["bash", "boot.sh"]
 ```
----
-class: center
-# Dockerfile
 
-![](img/dockefile-aufs.png)
+---
+class: center, middle
+
+# Dockerfile and Layers
+.img-80[![](img/dockerfile_layers.svg)]
+
 
 ---
 
@@ -156,12 +159,8 @@ RUN apt-get update && \
     apt-get install -y libmcrypt-dev libpq-dev netcat
 
 RUN docker-php-ext-install \
-        mcrypt \
-        bcmath \
-        mbstring \
-        zip \
-        opcache \
-        pdo pdo_pgsql
+        mcrypt bcmath mbstring zip \
+        opcache pdo pdo_pgsql
 
 COPY . /srv/
 
@@ -178,17 +177,14 @@ RUN apt-get update && \
     apt-get install -y libmcrypt-dev libpq-dev netcat
 
 *RUN docker-php-ext-install \
-*       mcrypt \
-*       bcmath \
-*       mbstring \
-*       zip \
-*       opcache \
-*       pdo pdo_pgsql
+*       mcrypt bcmath mbstring zip \
+*       opcache pdo pdo_pgsql
 
 COPY . /srv/
 
 WORKDIR /srv
 CMD ["bash", "boot.sh"]
+
 ```
 ---
 class: larger-code
@@ -200,16 +196,12 @@ RUN apt-get update && \
     apt-get install -y libmcrypt-dev libpq-dev netcat
 
 RUN docker-php-ext-install \
-        mcrypt \
-        bcmath \
-        mbstring \
-        zip \
-        opcache \
-        pdo pdo_pgsql
+        mcrypt bcmath mbstring zip \
+        opcache pdo pdo_pgsql
 
 COPY . /srv/
 
-*WORKDIR /srv
+WORKDIR /srv
 *CMD ["bash", "boot.sh"]
 ```
 
@@ -218,101 +210,41 @@ class: larger-code
 # Docker Build
 
 ```bash
+docker build -t myproject/php:latest .
 
-```
-
----
-
-# Dockviz
-
-```
-├─sha256:b5c41 Virtual Size: 495.8 MB Tags: php:7.0-fpm
-│ ├─sha256:a921a Virtual Size: 495.8 MB
-│ │ └─sha256:8ed59 Virtual Size: 495.8 MB Tags: hotswap_php:latest
-│ └─sha256:13276 Virtual Size: 541.8 MB
-│   ├─sha256:734c2 Virtual Size: 544.2 MB
-│   │ ├─sha256:21df5 Virtual Size: 592.9 MB Tags: localhost:5000/myproj/php:latest
-│   │ └─sha256:505d6 Virtual Size: 592.9 MB Tags: my_proj_php:latest
-│   └─sha256:2bc23 Virtual Size: 544.2 MB
-│     ├─sha256:78ca0 Virtual Size: 588.5 MB Tags: nda_php:latest
-│     ├─sha256:4821c Virtual Size: 593.6 MB Tags: todoapp_php:latest
-│     └─sha256:d4079 Virtual Size: 593.6 MB Tags: devops_php:latest
 ```
 
 ---
 class: larger-code
-# Start Container?
+# Dockviz
 
-```bash
-docker run --name test -it debian
+```
+├─sha256:b5c41: 495.8 MB Tags: php:7.0-fpm
+│ ├─sha256:a921a: 495.8 MB
+│ │ └─sha256:8ed59: 495.8 MB Tags: hotswap_php:latest
+│ └─sha256:13276: 541.8 MB
+│   ├─sha256:734c2: 544.2 MB
+│   │ ├─sha256:21df5: 592.9 MB Tags: repo:5000/myproj/php:latest
+│   │ └─sha256:505d6: 592.9 MB Tags: my_proj_php:latest
+│   └─sha256:2bc23: 544.2 MB
+│     ├─sha256:78ca0: 588.5 MB Tags: nda_php:latest
+│     ├─sha256:4821c: 593.6 MB Tags: todoapp_php:latest
+│     └─sha256:d4079: 593.6 MB Tags: devops_php:latest
 ```
 
 ---
-
+class: middle, center
+# Single Responsibility
+---
+class: command-example
 # Start Container
 
 ```bash
-#!/usr/bin/env bash
-
-# Disable xdebug in production environment
-xdebug_config=/usr/local/etc/php/conf.d/xdebug.ini
-if [ -f $xdebug_config ] && [ "$SYMFONY_ENV" == "prod" ]
-    then
-        rm $xdebug_config
-fi
-
-# Wait for postgres to start
-echo -n "waiting for TCP connection to database:..."
-while ! nc -z -w 1 database 5432 2>/dev/null
-do
-  echo -n "."
-  sleep 1
-done
-
-# Prepare application
-app/console cache:clear
-php-fpm
+docker run --name test -it myproject/php:latest
 ```
 
 ---
-class: middle larger-code
-# Volumes
 
---
-
-```
-docker run -it  -rm \
-*      -v '/var/lib/postgresql'
-*      -v 'config/postgres/psql.conf:/etc/postgres/psql.conf'
-       postgres:9.4
-```
-
----
-class: center, middle
-
-### No more data-only container madness
-
---
-
-# Named Volumes
-
----
-
-# Networking
-
----
-
-# Networking: Bridge
-
----
-
-# Networking: Host
-
----
-
-# Networking: Container
-
----
 # Start Container...
 
 ```bash
@@ -325,7 +257,7 @@ if [ -f $xdebug_config ] && [ "$SYMFONY_ENV" == "prod" ]
         rm $xdebug_config
 fi
 
-# Wait for postgres to start
+*# Wait for postgres to start
 *echo -n "waiting for TCP connection to database:..."
 *while ! nc -z -w 1 database 5432 2>/dev/null
 *do
@@ -363,6 +295,65 @@ done
 *app/console cache:clear
 *php-fpm
 ```
+
+---
+class: middle larger-code
+# Volumes
+
+--
+
+```
+docker run -it  -rm \
+*      -v '/var/lib/postgresql' \
+*      -v 'configs:/etc/postgresql/9.4/main/' \
+       postgres:9.4
+```
+
+---
+class: center, middle
+
+# Named Volumes
+
+### No more data-only container madness
+
+---
+
+class: center, middle, larger-code
+
+# Named Volumes
+
+```
+docker volume create dbdata --driver local
+```
+
+---
+
+class: center, middle, larger-code
+
+# Named Volumes
+
+```
+docker run -it  -rm \
+*      -v 'dbdata:/var/lib/postgresql' \
+       postgres:9.4
+```
+
+---
+class: center, middle
+# Networking
+
+---
+
+# Networking: Bridge
+
+---
+
+# Networking: Host
+
+---
+
+# Networking: Container
+
 
 ---
 
