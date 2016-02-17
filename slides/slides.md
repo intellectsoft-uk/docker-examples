@@ -5,7 +5,7 @@ class: center, middle
 Intellectsoft LTD
 
 ---
-class: center, middle  
+class: center, middle
 # Who I am
 
 Full-stack developer at Intellectsoft LTD.
@@ -303,8 +303,8 @@ class: middle larger-code
 --
 
 ```
-docker run -it  -rm \
-*      -v '/var/lib/postgresql' \
+docker run -it  --rm                          \
+*      -v '/var/lib/postgresql'               \
 *      -v 'configs:/etc/postgresql/9.4/main/' \
        postgres:9.4
 ```
@@ -333,7 +333,7 @@ class: center, middle, larger-code
 # Named Volumes
 
 ```
-docker run -it  -rm \
+docker run -it  -rm                    \
 *      -v 'dbdata:/var/lib/postgresql' \
        postgres:9.4
 ```
@@ -437,7 +437,7 @@ class: larger-code
 # Multiple Docker Compose files
 
 ```terminal
-docker-compose  -f 'docker-compose.yml' \
+docker-compose  -f 'docker-compose.yml'          \
                 -f 'docker-compose.test.yml' up -d
 ```
 
@@ -472,24 +472,18 @@ services:
 
 ---
 
-# So... How to distribute images?
-
-
+# So... How to share my project?
 ---
 
 # Docker Hub
+
+### Just like GitHub for infrastructure!
 
 ---
 
 # Docker Distribution
 
----
-
-# Docker Distribution: Auth
-
----
-
-# Docker Distribution: Frontend
+### Just like GitLab for infrastructure!
 
 ---
 
@@ -504,10 +498,11 @@ services:
 # Docker machine
 
 ```
-docker machine add
-       --driver general
-       --general-host 16.45.12.54
-       --general-ssh-user root
+docker machine add                \
+       --driver generic           \
+       --generic-host 16.45.12.54 \
+       --generic-ssh-user root    \
+       my-remove-host
 
 ```
 ---
@@ -533,9 +528,13 @@ docker-compose -f docker-compose.prod.yml up
 
 # How about multiple hosts?
 
+TODO: scheme
+
 ---
 
-# Fixed option
+# Links Multiple Hosts
+
+TODO: scheme
 
 ---
 
@@ -553,4 +552,61 @@ docker-compose -f docker-compose.prod.yml up
 
 ---
 
-# Service Discovery
+# Zero Downtime Deployment!
+
+--
+
+## Docker-Compose wont help you...
+
+---
+
+# Zero Downtime Deployment!
+
+## key-value store, confd
+
+---
+
+# Every tool have it's own problems
+
+---
+
+# Works hightly unstable on old kernels
+
+---
+
+## Remove stopped containers
+
+```
+docker rm $(docker ps -q -f status=exited)
+```
+
+## Remove untagged images
+
+```
+docker rmi $(docker images -q -f "dangling=true")
+
+```
+
+## Remove old volumes
+
+```
+docker volume rm $(docker volume ls -qf dangling=true)
+```
+
+---
+
+# MacOS guys?
+
+--
+
+- docker-machine and virtualbox
+- dinghy (adds NFS, dns server, http proxy...)
+
+---
+
+# Windows guys?
+
+--
+
+## Just use docker machine so far...
+
