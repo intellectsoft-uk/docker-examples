@@ -5,7 +5,8 @@ class: center, middle
 Intellectsoft LTD
 
 ---
-class: center, middle
+class: right, bottom, bg-cover, who-i-am
+background-image: url(img/dump.jpg)
 # Who I am
 
 Full-stack developer at Intellectsoft LTD.
@@ -30,12 +31,6 @@ background-image: url(img/blog-banner-dr-evil.png)
 ---
 class: center, middle
 # 90's
-
----
-class: center, middle
-# 1999
-
-(Matrix, Phantom Menace, Futurama, Family Guy)
 
 ---
 class: center, middle
@@ -206,7 +201,7 @@ WORKDIR /srv
 ```
 
 ---
-class: larger-code
+class: larger-code, command-example
 # Docker Build
 
 ```bash
@@ -236,11 +231,12 @@ class: larger-code
 class: middle, center
 # Single Responsibility
 ---
-class: command-example
+class: command-example, larger-code, command-example, middle
 # Start Container
 
 ```bash
-docker run --name test -it myproject/php:latest
+docker run --name test -it --rm \
+       myproject/php:latest
 ```
 
 ---
@@ -267,7 +263,7 @@ fi
 
 # Prepare application
 app/console cache:clear
-php-fpm
+php-fpm -R
 ```
 
 ---
@@ -293,11 +289,11 @@ done
 
 # Prepare application
 *app/console cache:clear
-*php-fpm
+*php-fpm -R
 ```
 
 ---
-class: middle larger-code
+class: middle larger-code, command-example
 # Volumes
 
 --
@@ -318,7 +314,7 @@ class: center, middle
 
 ---
 
-class: center, middle, larger-code
+class: center, middle, larger-code, command-example
 
 # Named Volumes
 
@@ -328,7 +324,7 @@ docker volume create dbdata --driver local
 
 ---
 
-class: center, middle, larger-code
+class: middle, larger-code, command-example
 
 # Named Volumes
 
@@ -343,17 +339,22 @@ class: center, middle
 # Networking
 
 ---
-
-# Networking: Bridge
-
----
-
-# Networking: Host
-
----
-
+class: center, middle
 # Networking: Container
 
+![](img/container-net.svg)
+
+---
+class: center, middle
+# Networking: Bridge
+
+![](img/bridge-net.svg)
+
+---
+class: center, middle
+# Networking: Host
+
+![](img/host-net.svg)
 
 ---
 
@@ -406,9 +407,9 @@ services:
         volumes:
             - dbdata:/var/lib/postgresql
 
-volumes:
-    dbdata:
-        driver: local
+*volumes:
+*   dbdata:
+*       driver: local
 ```
 
 ---
@@ -433,7 +434,7 @@ services:
 ```
 
 ---
-class: larger-code
+class: middle, larger-code, command-example
 # Multiple Docker Compose files
 
 ```terminal
@@ -471,42 +472,40 @@ services:
 ```
 
 ---
-
+class: middle
 # So... How to share my project?
 ---
-
+class: middle, center
 # Docker Hub
 
 ### Just like GitHub for infrastructure!
 
----
-
-# Docker Distribution
-
-### Just like GitLab for infrastructure!
+![](img/docker-hub.jpg)
 
 ---
-
+class: middle, center
 # Deployment?
 
 ---
-
+class: middle, center
 # Client-Server Architecture
 
----
+.img-60[![](img/deploy.png)]
 
+---
+class: middle, larger-code, command-example
 # Docker machine
 
 ```
-docker machine add                \
-       --driver generic           \
-       --generic-host 16.45.12.54 \
-       --generic-ssh-user root    \
+docker machine add                 \
+       --driver generic            \
+       --generic-host 160.45.12.54 \
+       --generic-ssh-user root     \
        my-remove-host
 
 ```
 ---
-
+class: middle, larger-code, command-example
 # Docker machine
 
 ```
@@ -515,7 +514,7 @@ docker machine add
 
 ```
 ---
-
+class: middle, larger-code, command-example
 # Deployment!
 
 ```
@@ -525,55 +524,68 @@ docker-compose -f docker-compose.prod.yml up
 ```
 
 ---
-
+class: center, middle
 # How about multiple hosts?
 
-TODO: scheme
-
 ---
-
+class: center, middle
 # Links Multiple Hosts
 
-TODO: scheme
+![](img/multihost.svg)
+
 
 ---
-
-# Networking: Overlay
-
----
-
+class: center, middle
 # Let is Swarm
 
 ---
+class: center, middle
+# Networking: Overlay
 
+![](img/multihost-swarm.svg)
+
+---
+class: center, middle
 # Service Discovery
 
 ### Etcd, Consul, Zookeeper
 
 ---
-
+class: center, middle
 # Zero Downtime Deployment!
 
 --
-
-## Docker-Compose wont help you...
+class: center, middle
+## Docker-Compose can't do that yet...
 
 ---
-
+class: center, middle
 # Zero Downtime Deployment!
 
-## key-value store, confd
+![](img/zero_dd_1.svg)
 
 ---
+class: center, middle
+# Zero Downtime Deployment!
 
+![](img/zero_dd_2.svg)
+
+---
+class: center, middle
+# Zero Downtime Deployment!
+
+![](img/zero_dd_3.svg)
+
+---
+class: center, middle
 # Every tool have it's own problems
 
 ---
-
+class: center, middle
 # Works hightly unstable on old kernels
 
 ---
-
+class: center, middle
 ## Remove stopped containers
 
 ```
@@ -594,7 +606,7 @@ docker volume rm $(docker volume ls -qf dangling=true)
 ```
 
 ---
-
+class: middle
 # MacOS guys?
 
 --
@@ -603,10 +615,15 @@ docker volume rm $(docker volume ls -qf dangling=true)
 - dinghy (adds NFS, dns server, http proxy...)
 
 ---
-
+class: center, middle
 # Windows guys?
 
 --
-
+class: center, middle
 ## Just use docker machine so far...
+
+
+--
+class: center, middle
+# Be cool, use Docker!
 
