@@ -627,3 +627,6 @@ class: center, middle
 class: center, middle
 # Be cool, use Docker!
 
+--
+
+Watch: https://github.com/intellectsoft-uk/docker-examples
