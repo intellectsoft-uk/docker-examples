@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+    front:
+        build: 'front'
+        ports:
+          - 0.0.0.0:8080:80
+        depends_on:
+          - app
+
+    app:
+        build: 'app'
+
+

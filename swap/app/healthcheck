@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+$timeout = time() + 60;
+do {
+    if (is_file(__DIR__ . '/.healthy')) {
+        exit (0);
+    }
+
+    echo ".";sleep(1);
+} while(time() < $timeout);
+
+exit(1);

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -e
+
+function containerName {
+    echo $(docker-compose ps | grep $1 | tail -1 | cut -d" " -f 1)
+}
+
+service=$1
+healthchekCmd=$2
+
+oldContainer=$(containerName $service)
+docker-compose scale "$service=2"
+newContainer=$(containerName $service)
+
+# Waiting for new container to be ready-to-use
+docker exec -it $newContainer "$healthchekCmd"
+echo "Container healthy!"
+
+# Swap!
+frontContainer=$(containerName front)
+docker kill $oldContainer
+docker exec $frontContainer nginx -s reload
+docker rm $oldContainer
