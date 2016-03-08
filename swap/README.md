@@ -45,7 +45,7 @@ docker-compose build app
 And now, here comes the magic! Let's replace containers:
 
 ```
-./scripts/swap app "./healtcheck"
+./scripts/swap app "./healthcheck"
 ```
 
 This script will start new container for given service, will wait until it's ready to handle requests, and then just kills the old one! After that it will reload nginx configs to make sure that is uses new container.
